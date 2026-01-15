@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Systems & Agentic Orchestration - GDG Surrey</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --google-blue: #4285f4;
+        --google-red: #ea4335;
+        --google-yellow: #fbbc04;
+        --google-green: #34a853;
+        --google-grey: #5f6368;
+        --google-dark: #202124;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: #3c4043;
+        margin: 0;
+        scroll-behavior: smooth;
+      }
+
+      .google-card {
+        box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+          0 4px 8px 3px rgba(60, 64, 67, 0.15);
+        border-radius: 12px;
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+        background: white;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .google-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          90deg,
+          var(--google-blue),
+          var(--google-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Animated Registration Text */
+      @keyframes google-colors {
+        0% {
+          color: var(--google-blue);
+        }
+        25% {
+          color: var(--google-red);
+        }
+        50% {
+          color: var(--google-yellow);
+        }
+        75% {
+          color: var(--google-green);
+        }
+        100% {
+          color: var(--google-blue);
+        }
+      }
+
+      @keyframes pulse-soft {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .animated-counter {
+        animation: google-colors 6s infinite linear,
+          pulse-soft 3s infinite ease-in-out;
+        display: inline-block;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .organizer-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #f0f0f0;
+        transition: all 0.2s;
+      }
+
+      .organizer-avatar:hover {
+        transform: scale(1.1);
+        border-color: var(--google-blue);
+      }
+
+      .header-banner {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        background-color: #000000;
+      }
+
+      .speaker-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Hero Animation */
+      @keyframes flow {
+        0% {
+          stroke-dashoffset: 100;
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          opacity: 0.3;
+        }
+      }
+      .animate-flow {
+        stroke-dasharray: 10;
+        animation: flow 3s linear infinite;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Web Page Header Banner -->
+    <div class="w-full bg-black overflow-hidden border-b border-gray-800">
+      <img
+        src="https://drive.google.com/thumbnail?id=1YNFHpxE0GxViNfcsAEU6J4Wu1437FmiM&sz=w1600"
+        alt="GDG Surrey Header"
+        class="header-banner"
+      />
+    </div>
+
+    <!-- Brand Header -->
+    <header
+      class="border-b border-gray-100 sticky top-0 bg-white z-50 shadow-sm"
+    >
+      <div
+        class="container mx-auto px-6 py-3 flex flex-col md:flex-row items-center justify-between"
+      >
+        <div class="flex items-center space-x-4">
+          <img
+            src="https://drive.google.com/thumbnail?id=1SLn2Dp-Qs5scv48mv4UvWxr0bNmwQ0Lf"
+            alt="GDG Surrey Logo"
+            class="h-8 w-auto"
+            onerror="this.src='https://ui-avatars.com/api/?name=GDG+Surrey&background=4285F4&color=fff'"
+          />
+          <h2 class="text-lg font-medium text-gray-700">
+            Google Developer Group
+            <span class="font-bold text-gray-900">Surrey</span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-6 mt-3 md:mt-0">
+          <span
+            class="text-[10px] font-bold uppercase tracking-widest text-[#5F6368]"
+            >AI Architect Track</span
+          >
+          <a
+            href="#register"
+            class="bg-[#4285F4] text-white px-5 py-2 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95"
+          >
+            Register Now
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-white overflow-hidden">
+      <div class="container mx-auto px-6">
+        <div
+          class="flex flex-col lg:flex-row items-center justify-between gap-12"
+        >
+          <div class="max-w-3xl">
+            <h1
+              class="text-5xl md:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight"
+            >
+              AI Systems & <br />
+              <span class="gradient-text">Agentic Orchestration</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
+              A 2-day workshop series hosted by
+              <strong>GDG Surrey</strong>. Architect production-ready systems
+              and master agentic flows.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <div
+                class="flex items-center gap-2 px-4 py-2 bg-blue-50 text-[#4285F4] rounded-full text-sm font-bold border border-blue-100"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span>Feb 21: 9 AM - 12 PM PST</span>
+              </div>
+              <div
+                class="flex items-center gap-2 px-4 py-2 bg-green-50 text-[#34A853] rounded-full text-sm font-bold border border-green-100"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span>Feb 22: 9 AM - 12 PM PST</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animated Architecture Illustration -->
+          <div class="hidden lg:block w-full max-w-sm">
+            <svg
+              viewBox="0 0 400 300"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-full h-auto"
+            >
+              <path d="M100 150 H300" stroke="#E5E7EB" stroke-width="2" />
+              <path d="M200 80 V220" stroke="#E5E7EB" stroke-width="2" />
+              <path
+                d="M100 150 H300"
+                stroke="#4285F4"
+                stroke-width="2"
+                class="animate-flow"
+              />
+              <path
+                d="M200 80 V220"
+                stroke="#34A853"
+                stroke-width="2"
+                class="animate-flow"
+                style="animation-delay: 1s"
+              />
+              <rect
+                x="75"
+                y="125"
+                width="50"
+                height="50"
+                rx="8"
+                fill="white"
+                stroke="#4285F4"
+                stroke-width="2"
+              />
+              <rect
+                x="275"
+                y="125"
+                width="50"
+                height="50"
+                rx="8"
+                fill="white"
+                stroke="#34A853"
+                stroke-width="2"
+              />
+              <circle
+                cx="200"
+                cy="150"
+                r="12"
+                fill="white"
+                stroke="#5F6368"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Hub -->
+    <section
+      id="register"
+      class="container mx-auto px-6 py-16 bg-gray-50/50 rounded-[2.5rem] border border-gray-100 mb-12"
+    >
+      <div class="text-center mb-12">
+        <div
+          class="inline-block bg-white px-8 py-3 rounded-full shadow-md border border-gray-200"
+        >
+          <p class="animated-counter text-lg md:text-xl">
+            🚀 50+ developers already registered
+          </p>
+        </div>
+        <p class="mt-4 text-gray-500 text-sm font-medium">
+          Join the Surrey developer community for this exclusive deep-dive.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Day 1 -->
+        <div class="google-card p-8 border-t-8 border-[#4285F4]">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="font-bold text-2xl text-gray-900">Day 1 • Feb 21</h3>
+            <span
+              class="bg-blue-100 text-[#4285F4] text-[10px] font-black px-2 py-1 rounded uppercase"
+              >Foundations</span
+            >
+          </div>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Master system design thinking for production AI. We'll explore
+            architectural patterns, technical seams, and defining trust
+            boundaries in complex LLM implementations.
+          </p>
+          <a
+            href="https://gdg.community.dev/events/details/google-gdg-surrey-presents-day-1-ai-system-design-amp-agentic-orchestration-workshop/"
+            target="_blank"
+            class="bg-[#4285F4] text-white py-4 text-center rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-blue-600 transition-all active:scale-95 flex items-center justify-center gap-2"
+          >
+            Register for Day 1
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="google-card p-8 border-t-8 border-[#34A853]">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="font-bold text-2xl text-gray-900">Day 2 • Feb 22</h3>
+            <span
+              class="bg-green-100 text-[#34A853] text-[10px] font-black px-2 py-1 rounded uppercase"
+              >Advanced</span
+            >
+          </div>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Dive into operational resilience and agentic orchestration. Learn
+            how to handle failure modes and build applied reasoning systems
+            using emerging developer tools.
+          </p>
+          <a
+            href="https://gdg.community.dev/events/details/google-gdg-surrey-presents-day-2-ai-system-design-amp-agentic-orchestration-workshop/"
+            target="_blank"
+            class="bg-[#34A853] text-white py-4 text-center rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-green-600 transition-all active:scale-95 flex items-center justify-center gap-2"
+          >
+            Register for Day 2
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">
+          Featured Speakers
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Robina Mirbahar -->
+          <div class="google-card p-6 text-center group">
+            <a
+              href="https://www.linkedin.com/in/robinamirbahar/"
+              target="_blank"
+            >
+              <div
+                class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-transparent group-hover:border-[#EA4335] transition-all overflow-hidden shadow-md"
+              >
+                <img
+                  src="https://drive.google.com/thumbnail?id=1S00PdCb28Y9A7FqSW75Rmm67RK1_BpUmbTn-F_qIeSo&sz=w400"
+                  alt="Robina Mirbahar"
+                  class="speaker-img"
+                  onerror="this.src='https://ui-avatars.com/api/?name=Robina+Mirbahar&background=EA4335&color=fff'"
+                />
+              </div>
+              <h4 class="font-bold text-gray-900 group-hover:text-[#EA4335]">
+                Robina Mirbahar
+              </h4>
+              <p class="text-[9px] font-black text-[#EA4335] uppercase mb-2">
+                Google Developer Expert
+              </p>
+              <p class="text-[10px] text-gray-500 leading-tight">
+                WTM Ambassador · Cloud Solutions Architect · Google Cloud
+                Innovator Champion
+              </p>
+            </a>
+          </div>
+
+          <!-- Henry Ruiz -->
+          <div class="google-card p-6 text-center group">
+            <a href="https://www.linkedin.com/in/haruiz/" target="_blank">
+              <div
+                class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-transparent group-hover:border-[#34A853] transition-all overflow-hidden shadow-md"
+              >
+                <img
+                  src="https://drive.google.com/thumbnail?id=1fDmOM6BemnCxRSdYATEjNlPrcAGz9Cy8RRoZ9zqHJzo&sz=w400"
+                  alt="Henry Ruiz"
+                  class="speaker-img"
+                  onerror="this.src='https://ui-avatars.com/api/?name=Henry+Ruiz&background=34A853&color=fff'"
+                />
+              </div>
+              <h4 class="font-bold text-gray-900 group-hover:text-[#34A853]">
+                Henry Ruiz, Ph.D
+              </h4>
+              <p class="text-[9px] font-black text-[#34A853] uppercase mb-2">
+                AI Research Scientist
+              </p>
+              <p class="text-[10px] text-gray-500 leading-tight">
+                Senior ML Engineer @ Texas A&M University · Deep Learning
+                Specialist
+              </p>
+            </a>
+          </div>
+
+          <!-- Hannes Hapke -->
+          <div class="google-card p-6 text-center group">
+            <a href="https://www.linkedin.com/in/hanneshapke/" target="_blank">
+              <div
+                class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-transparent group-hover:border-[#4285F4] transition-all overflow-hidden shadow-md"
+              >
+                <img
+                  src="https://drive.google.com/thumbnail?id=13g3xGe_HWEIiEJ42QhU_JmsE4Uk8vKIKKAu4Fwzk8hM&sz=w400"
+                  alt="Hannes Hapke"
+                  class="speaker-img"
+                  onerror="this.src='https://ui-avatars.com/api/?name=Hannes+Hapke&background=4285F4&color=fff'"
+                />
+              </div>
+              <h4 class="font-bold text-gray-900 group-hover:text-[#4285F4]">
+                Hannes Hapke
+              </h4>
+              <p class="text-[9px] font-black text-[#4285F4] uppercase mb-2">
+                Open Source @ Dataiku
+              </p>
+              <p class="text-[10px] text-gray-500 leading-tight">
+                Everything ML/AI · Open Source Advocate · Technical Author
+              </p>
+            </a>
+          </div>
+
+          <!-- Sheena Yap Chan -->
+          <div class="google-card p-6 text-center group">
+            <a
+              href="https://www.linkedin.com/in/sheenayapchan/"
+              target="_blank"
+            >
+              <div
+                class="w-28 h-28 rounded-full mx-auto mb-4 border-2 border-transparent group-hover:border-[#FBBC04] transition-all overflow-hidden shadow-md"
+              >
+                <img
+                  src="https://drive.google.com/thumbnail?id=1hGF1LasUgoT4hCTcRsnRP7Az075Fe_4KYkK3hXNWBKA&sz=w400"
+                  alt="Sheena Yap Chan"
+                  class="speaker-img"
+                  onerror="this.src='https://ui-avatars.com/api/?name=Sheena+Yap+Chan&background=FBBC04&color=fff'"
+                />
+              </div>
+              <h4 class="font-bold text-gray-900 group-hover:text-[#FBBC04]">
+                Sheena Yap Chan
+              </h4>
+              <p class="text-[9px] font-black text-[#FBBC04] uppercase mb-2">
+                WSJ Bestselling Author
+              </p>
+              <p class="text-[10px] text-gray-500 leading-tight">
+                TEDx Speaker · Confidence Through Visibility · Leadership
+                Trainer
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hosted By Section -->
+    <section class="py-16 bg-white border-t border-gray-100">
+      <div class="container mx-auto px-6 text-center">
+        <h3
+          class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-10"
+        >
+          Organizing Committee
+        </h3>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10"
+        >
+          <div class="text-center">
+            <a
+              href="https://www.linkedin.com/in/priti-yadavml/"
+              target="_blank"
+              class="group"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1G27M2e2Lant1NB1M8JU65dauJY49QEwz&sz=w300"
+                class="organizer-avatar mx-auto mb-3 shadow-sm"
+                alt="Priti Yadav"
+              />
+              <h5
+                class="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors"
+              >
+                Priti Yadav
+              </h5>
+              <p class="text-[10px] text-gray-500">
+                Marketing @ Dassault Systèmes
+              </p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a
+              href="https://www.linkedin.com/in/chandralekhapolepalle/"
+              target="_blank"
+              class="group"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1V0bvmY9Qmh3iXyAwmoQJ8_zwcVkUybfX&sz=w300"
+                class="organizer-avatar mx-auto mb-3 shadow-sm"
+                alt="Chandralekha Polepalle"
+              />
+              <h5
+                class="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors"
+              >
+                Chandralekha Polepalle
+              </h5>
+              <p class="text-[10px] text-gray-500">Full Stack @ Autodesk</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a
+              href="https://www.linkedin.com/in/activesince93/"
+              target="_blank"
+              class="group"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1cRnE7sJpALpBJUtn_OVU30xxlJn5k4c7&sz=w300"
+                class="organizer-avatar mx-auto mb-3 shadow-sm"
+                alt="Darshan Parikh"
+              />
+              <h5
+                class="font-bold text-gray-900 text-sm group-hover:text-blue-600 transition-colors"
+              >
+                Darshan Parikh
+              </h5>
+              <p class="text-[10px] text-gray-500">
+                Senior Engineer @ Autodesk
+              </p>
+            </a>
+          </div>
+        </div>
+        <a
+          href="https://gdg.community.dev/gdg-surrey/"
+          target="_blank"
+          class="text-blue-600 text-sm font-bold inline-flex items-center gap-2 hover:underline"
+        >
+          Official Community Page
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#34A853] text-white py-12">
+      <div class="container mx-auto px-6 text-center space-y-4">
+        <p class="text-lg font-bold">Google Developer Group Surrey</p>
+        <p class="text-xs opacity-90 max-w-md mx-auto">
+          Providing a platform for developers to learn, share, and grow with
+          Google technologies in Surrey, British Columbia.
+        </p>
+        <div
+          class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs"
+        >
+          <a
+            href="mailto:gdgsurrey@gmail.com"
+            class="hover:text-yellow-300 transition-colors flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path>
+              <path
+                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path>
+            </svg>
+            gdgsurrey@gmail.com
+          </a>
+          <a
+            href="https://www.linkedin.com/company/google-developer-groups-surrey/"
+            target="_blank"
+            class="hover:text-yellow-300 transition-colors flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+        <p class="text-[10px] opacity-60 pt-8">
+          © 2026 GDG Surrey • Not affiliated with Google LLC but part of the
+          global GDG program.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
